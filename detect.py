@@ -113,7 +113,7 @@ def run(
         _i+=1
         if skip_frames and _i % skip_frames != 0:
             continue
-        
+
         t1 = time_sync()
         im = torch.from_numpy(im).to(device)
         im = im.half() if model.fp16 else im.float()  # uint8 to fp16/32
@@ -242,7 +242,7 @@ def parse_opt():
     parser.add_argument('--hide-conf', default=False, action='store_true', help='hide confidences')
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
-    parser.add_argument('--skip-frames', action='store_true', help='skip frames in video sources')
+    parser.add_argument('--skip-frames', type=int, default=0, action='store_true', help='skip frames in video sources')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(vars(opt))
