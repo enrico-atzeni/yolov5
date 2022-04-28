@@ -242,7 +242,7 @@ def parse_opt():
     parser.add_argument('--hide-conf', default=False, action='store_true', help='hide confidences')
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
-    parser.add_argument('--skip-frames', type=int, default=0, action='store_true', help='skip frames in video sources')
+    parser.add_argument('--skip-frames', type=int, default=0, help='skip frames in video sources')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(vars(opt))
